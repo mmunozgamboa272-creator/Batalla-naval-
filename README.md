@@ -47,3 +47,36 @@ Batalla-naval---Proyecto-final/
 └── docs/
     └── (documentación adicional)
 ```
+Segunda entrega:
+Funcionalidad tablero:
+import random # importamos random para el juego aleatorios
+
+class Tablero:
+    # normas y reglas de juego.
+    def __init__(self, filas, columnas):
+        self.filas = filas
+        self.columnas = columnas
+        self.mar = "-"
+        self.submarino = "S"
+        self.disparo_fallado = "o"
+        self.disparo_acertado = "*"
+# creamos una matriz (tabla) de tamaño filas x columnas 
+        self.tablero = [[self.mar for _ in range(columnas)] for _ in range(filas)]
+
+    def mostrar(self):
+        print("\nTablero:")
+        for fila in self.tablero:
+            print(" ".join(fila))
+
+    def colocar_barco(self):
+        x = random.randint(0, self.filas - 1)
+        y = random.randint(0, self.columnas - 1)
+        self.tablero[x][y] = self.submarino # cambia el valor de esa posicion por un barco S
+ 
+    def disparar(self, x, y):
+        if self.tablero[x][y] == self.submarino:
+            print("impacto")
+            self.tablero[x][y] = self.disparo_acertado
+        else:
+            print("agua")
+            self.tablero[x][y] = self.disparo_fallado
