@@ -48,7 +48,9 @@ Batalla-naval---Proyecto-final/
     └── (documentación adicional)
 ```
 Segunda entrega:
+
 Funcionalidad tablero:
+
 import random # importamos random para el juego aleatorios
 
 class Tablero:
