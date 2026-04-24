@@ -55,14 +55,15 @@ import random # importamos random para el juego aleatorios
 
 class Tablero:
     # normas y reglas de juego.
+   
     def __init__(self, filas, columnas):
-        self.filas = filas
-        self.columnas = columnas
-        self.mar = "-"
-        self.submarino = "S"
-        self.disparo_fallado = "o"
-        self.disparo_acertado = "*"
-# creamos una matriz (tabla) de tamaño filas x columnas 
+        self.filas = filas 
+        self.columnas = columnas 
+        self.mar = "-" 
+        self.submarino = "S" 
+        self.disparo_fallado = "o" 
+        self.disparo_acertado = "*" 
+
         self.tablero = [[self.mar for _ in range(columnas)] for _ in range(filas)]
 
     def mostrar(self):
