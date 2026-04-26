@@ -83,3 +83,8 @@ class Tablero:
         else:
             print("agua")
             self.tablero[x][y] = self.disparo_fallado
+T = Tablero(3, 3)
+T.colocar_barco()
+T.mostrar()
+T.disparar(1, 1)
+T.mostrar() 
