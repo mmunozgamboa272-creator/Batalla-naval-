@@ -99,7 +99,7 @@ class Tablero:
         
         self.intentos_restantes -= 1
 
-    # Método para cumplir con el requisito del CSV
+    # CSV
     def cargar_desde_csv(self, nombre_archivo):
         with open(nombre_archivo, 'r') as archivo:
             lector = csv.reader(archivo)
