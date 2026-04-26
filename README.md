@@ -51,42 +51,68 @@ Segunda entrega:
 
 Funcionalidad tablero:
 
-import random # importamos random para el juego aleatorios
+import random
+import csv
 
 class Tablero:
-    # normas y reglas de juego.
-   
-    def __init__(self, filas, columnas):
+    def __init__(self, filas, columnas, intentos_max):
         self.filas = filas 
         self.columnas = columnas 
         self.mar = "-" 
         self.submarino = "S" 
         self.disparo_fallado = "o" 
         self.disparo_acertado = "*" 
-
+    
+        # Nuevas variables pedidas por el ejercicio
+        self.barcos_restantes = 0
+        self.barcos_derribados = 0
+        self.intentos_restantes = intentos_max
+        
         self.tablero = [[self.mar for _ in range(columnas)] for _ in range(filas)]
 
     def mostrar(self):
-        print("\nTablero:")
+        print(f"\n--- ESTADO DE LA PARTIDA ---")
+        print(f"Barcos restantes: {self.barcos_restantes} | Derribados: {self.barcos_derribados} | Intentos: {self.intentos_restantes}")
+        print("\nTablero Enemigo:")
         for fila in self.tablero:
             print(" ".join(fila))
 
     def colocar_barco(self):
         x = random.randint(0, self.filas - 1)
         y = random.randint(0, self.columnas - 1)
-        self.tablero[x][y] = self.submarino # cambia el valor de esa posicion por un barco S
- 
-    def disparar(self, x, y):
-        if self.tablero[x][y] == self.submarino:
-            print("impacto")
-            self.tablero[x][y] = self.disparo_acertado
-        else:
-            print("agua")
-            self.tablero[x][y] = self.disparo_fallado
+        if self.tablero[x][y] == self.mar:
+            self.tablero[x][y] = self.submarino
+            self.barcos_restantes += 1
 
-    T = Tablero(3, 3)
-    T.colocar_barco()
-    T.mostrar()
-    T.disparar(1, 1)
-    T.mostrar()
+    def disparar(self, x, y):
+        if self.intentos_restantes <= 0:
+            print("¡No te quedan más misiles!")
+            return
+
+        if self.tablero[x][y] == self.submarino:
+            print("¡IMPACTO!")
+            self.tablero[x][y] = self.disparo_acertado
+            self.barcos_restantes -= 1
+            self.barcos_derribados += 1
+        else:
+            print("AGUA...")
+            self.tablero[x][y] = self.disparo_fallado
+        
+        self.intentos_restantes -= 1
+
+    # Método para cumplir con el requisito del CSV
+    def cargar_desde_csv(self, nombre_archivo):
+        with open(nombre_archivo, 'r') as archivo:
+            lector = csv.reader(archivo)
+            self.tablero = list(lector)
  
+# 1. Creamos el tablero (filas, columnas, intentos)
+T = Tablero(5, 5, 10) 
+# 2. Ponemos un barco para probar
+T.colocar_barco()
+# 3. ¡Mostramos el tablero!
+T.mostrar()
+# 4. Probamos un disparo
+T.disparar(0, 0) 
+# 5. Mostramos cómo quedó
+T.mostrar()
