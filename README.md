@@ -49,12 +49,12 @@ Batalla-naval---Proyecto-final/
 Segunda entrega:
 
 # Funcionalidad tablero:
-
+```
 import random
 import csv
 
 class Tablero:
-    def __init__(self, filas, columnas, intentos_max):
+    def __init__(self, filas, columnas, intentos_max): 
         self.filas = filas 
         self.columnas = columnas 
         self.mar = "-" 
@@ -115,3 +115,4 @@ T.mostrar()
 T.disparar(0, 0) 
 5. Mostramos cómo quedó
 T.mostrar()
+```
