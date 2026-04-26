@@ -13,7 +13,6 @@ Realizaremos un juego de Batalla Naval utilizando temas vistos en clase, tales c
 - Mariana Muñoz
 - Juan Cocunubo
 - Valeria Ascanio
-- Alejandra Moyano
 
 ## Herramientas
 -Lenguaje:Python
@@ -49,7 +48,7 @@ Batalla-naval---Proyecto-final/
 ```
 Segunda entrega:
 
-Funcionalidad tablero:
+# Funcionalidad tablero:
 
 import random
 import csv
@@ -106,13 +105,13 @@ class Tablero:
             lector = csv.reader(archivo)
             self.tablero = list(lector)
  
-# 1. Creamos el tablero (filas, columnas, intentos)
+1. Creamos el tablero (filas, columnas, intentos)
 T = Tablero(5, 5, 10) 
-# 2. Ponemos un barco para probar
+2. Ponemos un barco para probar
 T.colocar_barco()
-# 3. ¡Mostramos el tablero!
+3. ¡Mostramos el tablero!
 T.mostrar()
-# 4. Probamos un disparo
+4. Probamos un disparo
 T.disparar(0, 0) 
-# 5. Mostramos cómo quedó
+5. Mostramos cómo quedó
 T.mostrar()
