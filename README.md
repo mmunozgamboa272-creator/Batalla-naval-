@@ -90,5 +90,3 @@ class Tablero:
     T.disparar(1, 1)
     T.mostrar()
  
-T.disparar(1, 1)
-T.mostrar() 
